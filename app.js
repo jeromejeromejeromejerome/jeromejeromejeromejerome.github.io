@@ -14,7 +14,8 @@ app.directive("myVacations", function() {
     },
     templateUrl: 'templates/my-vacations.html',
     link: function(scope) {
-      //console.log(scope.raw);
+      
+   
       scope.balance = 0;
       scope.numberofitems = 0;
       obj = scope.raw;
@@ -94,19 +95,21 @@ app.controller("Ctrl", ["$scope", "Users", "$modal", "fbURL", "$firebaseObject",
       };
       // Add new user
       $scope.addVacations = function() {
-     //   $scope.userNewVacations.enddate = $scope.userNewVacations.enddate.toJSON();
-     //   $scope.userNewVacations.startdate = $scope.userNewVacations.startdate.toJSON();
+        $scope.userNewVacations.enddate = $scope.userNewVacations.enddate.toJSON();
+        $scope.userNewVacations.startdate = $scope.userNewVacations.startdate.toJSON();
         
         var ref = new Firebase(fbURL + id + '/vacations/');
         var vacationsArray = $firebaseArray(ref);
         
         var idAdded; 
       //  console.log("je rentre");
-        vacationsArray.$add($scope.userNewVacations).then(function(idInserted){
+
+          vacationsArray.$add($scope.userNewVacations).then(function(idInserted){
           var id = idInserted.key();
         //  console.log("added " + id);
           idAdded = id;
         });
+        
       //  console.log("je sors");
         $modalInstance.dismiss('cancel');
       };
@@ -119,7 +122,6 @@ app.controller("Ctrl", ["$scope", "Users", "$modal", "fbURL", "$firebaseObject",
     };
     $scope.model = function($scope, $modalInstance, Users, id, $firebase, fbURL, $firebaseObject) {
       $scope.user = {};
-
       // if clicked edit. id comes from $scope.modal->userId
       if (angular.isDefined(id)) {
         var userUrl = fbURL + id + '/';
@@ -128,12 +130,10 @@ app.controller("Ctrl", ["$scope", "Users", "$modal", "fbURL", "$firebaseObject",
         //  $scope.user.networkid = "new user";
         //    $scope.user.coming = "new user";
       }
-
       // close modal
       $scope.cancel = function() {
         $modalInstance.dismiss('cancel');
       };
-
       // Add new user
       $scope.add = function() {
         $scope.user.lastmodified = new Date().toJSON();
@@ -141,7 +141,6 @@ app.controller("Ctrl", ["$scope", "Users", "$modal", "fbURL", "$firebaseObject",
         Users.$add($scope.user);
         $modalInstance.dismiss('cancel');
       };
-
       // Save edited user.
       $scope.save = function() {
         $scope.user.lastmodified = JSON.stringify(new Date());

@@ -1,5 +1,5 @@
 <h2>User's view</h2>
-<h4>It will only show information for the current logged-in user</h4>
+<h4>It will automatically show information for the current logged-in user</h4>
 <section>
   <!-- <input type="text" ng-model="search" class="search-query pull-left" placeholder="Search"> -->
 </section>
@@ -27,14 +27,11 @@
         <th class="span5">Network ID</th>
         <th class="span5">Vacations</th>
       </tr>
-      <tr ng-repeat="employee in dataModel | filter:{$id:current} | orderBy:'name'">
+      <tr ng-repeat="employee in dataModel | filter:{$id:current.$id} | orderBy:'name'">
         <td>{{employee.lastmodified|date:'dd MMMM yyyy'}}</td>
         <td>{{employee.name}}</td>
         <td>{{employee.networkid}}</td>
         <td><span my-vacations info='employee.vacations'></span>
-        </td>
-        <td>
-          <a class="btn btn-primary btn-small" ng-click="select(employee.$id)">Select</a>
         </td>
       </tr>
     </tbody>
@@ -58,7 +55,5 @@
       </tr>
     </tbody>
   </table>
-
-  {{currentUserVacations}}
 </form>
 
