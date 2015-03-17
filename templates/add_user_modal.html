@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h3>User Form</h3>
+</div>
+
+<form name="userForm" class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input id="name" name="name" ng-model="user.name" type="text" placeholder="Name" class="input-xsmall" required="" ng-class="{error: user.name.$invalid && !user.name.$pristine}" />
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="networkid">NetworkID</label>
+    <div class="controls">
+      <input id="networkid" name="networkid" ng-model="user.networkid" type="text" placeholder="NetworkID" class="input-xlarge" required="" ng-class="{error: user.networkid.$invalid && !user.networkid.$pristine}" />
+    </div>
+  </div>
+
+</form>
+
+<div class="modal-footer">
+  <div style="float:right">
+    <button ng-click="save()" ng-if="user.$id" class="btn btn-primary"><i class="icon-white icon-plus"></i>Save</button>
+    <button ng-click="add()" type="submit" ng-if="!user.$id" ng-disabled="user.$invalid" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+    <button ng-click="cancel()" class="btn">Cancel</button>
+  </div>
+</div>

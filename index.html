@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+  <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+  <script src="app.js"></script>
+
+  <body ng-controller="Ctrl" class="container-fluid">
+    <h1>Vacations and Overtime tracking</h1>
+    <tabset justified="true">
+      <tab heading="Operate - Admin">
+        <div ng-include="'templates/operate.html'"></div>
+      </tab>
+      <tab heading="Employees list - Admin">
+        <div ng-include="'templates/employees.html'"></div>
+      </tab>
+      <tab heading="User's view">
+        <div ng-include="'templates/user.html'"></div>
+      </tab>
+    </tabset>
+  </body>
+</html>

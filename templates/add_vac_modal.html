@@ -1,0 +1,74 @@
+<div class="modal-header">
+  <h3>Vacations form</h3>
+</div>
+
+<form name="vacForm" class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label" for="comments">Comments</label>
+    <div class="controls">
+      <input id="comments" name="comments" ng-model="userNewVacations.comments" type="text" placeholder="comments" class="input-xsmall" required="" />
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label" for="startdate">Start Date</label>
+    <div class="controls">
+      <!--<input id="startdate" datepicker-popup="yyyy-MM-dd" name="startdate" ng-model="userNewVacations.startdate" type="text" placeholder="startdate" class="input-xsmall" required="" /> -->
+       <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="userNewVacations.startdate" is-open="opened1" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="dpopen1($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label" for="enddate">End Date</label>
+    <div class="controls">
+      <!--<input id="enddate" datepicker-popup="yyyy-MM-dd" name="enddate" ng-model="userNewVacations.enddate" type="text" placeholder="enddate" class="input-xsmall" required="" /> -->
+       <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="userNewVacations.enddate" is-open="opened2" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="dpopen2($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label" for="days">Days</label>
+    <div class="controls">
+      <input id="days" name="days" ng-model="userNewVacations.days" type="number" placeholder="days" class="input-xsmall" required="" />
+    </div>
+  </div>
+
+<!--
+<td><div style="width: 100px" >        
+         <input id="enddate" name="enddate"  datepicker-popup="yyyy-MM-dd" ng-model="vacation.enddate" type="text"/>
+        </div></td>
+         
+         <td><div style="width: 100px" >
+                     <input id="days" name="days" ng-model="vacation.days" type="number"/>
+                     </div></td>
+-->
+
+
+ <h4>Current Server Data:</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <pre>{{userNewVacations|json}}</pre>
+      </div>
+    </div>
+
+
+</form>
+
+<div class="modal-footer">
+  <div style="float:right">
+    <button ng-click="saveVacations()" ng-if="user.$id" class="btn btn-primary"><i class="icon-white icon-plus"></i>Save</button>
+    <button ng-click="addVacations()" type="submit" ng-if="!user.$id" ng-disabled="user.$invalid" class="btn btn-primary"><i class="icon-white icon-plus"></i> Add</button>
+    <button ng-click="cancel()" class="btn">Cancel</button>
+  </div>
+</div>
