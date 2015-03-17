@@ -101,13 +101,13 @@ app.controller("Ctrl", ["$scope", "Users", "$modal", "fbURL", "$firebaseObject",
         var vacationsArray = $firebaseArray(ref);
         
         var idAdded; 
-        console.log("je rentre");
+      //  console.log("je rentre");
         vacationsArray.$add($scope.userNewVacations).then(function(idInserted){
           var id = idInserted.key();
-          console.log("added " + id);
+        //  console.log("added " + id);
           idAdded = id;
         });
-        console.log("je sors");
+      //  console.log("je sors");
         $modalInstance.dismiss('cancel');
       };
       // Save edited user.
